@@ -1,3 +1,4 @@
+import { CheckCircleIcon } from "@chakra-ui/icons";
 import {
   Flex,
   Box,
@@ -11,9 +12,16 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  Spinner,
+  VStack,
 } from "@chakra-ui/react";
+import { useContext } from "react";
+import { AppContext } from "../AppContext.jsx/AppContextProvider";
+import { loginReq } from "../AuthReducer/actionCreator";
 
 export default function SimpleCard() {
+  const { state, dispatch } = useContext(AppContext);
+
   return (
     <Flex
       minH={"100vh"}
@@ -34,35 +42,96 @@ export default function SimpleCard() {
           boxShadow={"lg"}
           p={8}
         >
-          <Stack spacing={4}>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input type="password" />
-            </FormControl>
-            <Stack spacing={10}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}
-              >
-                <Checkbox>Remember me</Checkbox>
-                <Link color={"blue.400"}>Forgot password?</Link>
+          {!state.isAuth && !state.isLoading && (
+            <Stack spacing={4}>
+              <FormControl id="email">
+                <FormLabel>Email address</FormLabel>
+                <Input
+                  type="email"
+                  value={state.email}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "EMAIL_ONCHANGE",
+                      payload: e.target.value,
+                    })
+                  }
+                />
+              </FormControl>
+              <FormControl id="password">
+                <FormLabel>Password</FormLabel>
+                <Input
+                  type="password"
+                  value={state.password}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "PASSWORD_ONCHANGE",
+                      payload: e.target.value,
+                    })
+                  }
+                />
+              </FormControl>
+              <Stack spacing={10}>
+                <Stack
+                  direction={{ base: "column", sm: "row" }}
+                  align={"start"}
+                  justify={"space-between"}
+                >
+                  <Checkbox>Remember me</Checkbox>
+                  <Link color={"blue.400"}>Forgot password?</Link>
+                </Stack>
+                <Button
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                  onClick={() =>
+                    loginReq(
+                      { email: state.email, password: state.password },
+                      dispatch
+                    )
+                  }
+                >
+                  Sign in
+                </Button>
               </Stack>
-              <Button
+            </Stack>
+          )}
+          {state.isLoading && (
+            <VStack>
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="xl"
+              />
+              <Text> Please Wait....</Text>
+            </VStack>
+          )}
+          {state.isAuth && !state.isLoading && (
+            <Box textAlign="center" py={10} px={6}>
+              <CheckCircleIcon boxSize={"50px"} color={"green.500"} />
+              <Heading as="h2" size="xl" mt={6} mb={2}>
+                Welcome
+              </Heading>
+              <Text color={"gray.500"}>You are Logged in</Text>
+              <Text color={"gray.500"}>Token :</Text>
+                          <Button
+                              my={5}
                 bg={"blue.400"}
                 color={"white"}
                 _hover={{
                   bg: "blue.500",
                 }}
+                onClick={() =>
+                  dispatch({type:"LOGOUT"})
+                }
               >
-                Sign in
+                Log Out
               </Button>
-            </Stack>
-          </Stack>
+            </Box>
+          )}
         </Box>
       </Stack>
     </Flex>

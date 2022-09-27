@@ -8,7 +8,7 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube, FaHeart } from "react-icons/fa";
+import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const SocialButton = ({
   children,
@@ -54,9 +54,7 @@ export default function SmallWithSocial() {
         align={{ base: "center", md: "center" }}
       >
         <Text>© 2022 ShopEasy.</Text>
-        <Flex>
-                  Made with  <FaHeart />  by Aniruddha
-        </Flex>
+        <Flex>Made with ❤️ by Aniruddha</Flex>
         <Stack direction={"row"} spacing={6}>
           <SocialButton label={"Twitter"} href={"#"}>
             <FaTwitter />

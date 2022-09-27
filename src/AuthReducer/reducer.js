@@ -9,7 +9,7 @@ const reducer = (state, action) => {
         case "LOGIN_SUCCESS":
             return { ...state, isAuth: true,isLoading: false, token: action.payload }
         case "LOGIN_FAILURE":
-            return { ...state, isAuth: false, token: null, isError: true }
+            return { ...state, isAuth: false, token: null, isError: true ,isLoading:false }
         case "LOGOUT":
             return { ...state, isAuth: false,token:null,isError:false,isLoading:false }
         

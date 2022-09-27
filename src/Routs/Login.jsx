@@ -42,63 +42,61 @@ export default function SimpleCard() {
           boxShadow={"lg"}
           p={8}
         >
-          {!state.isAuth &&
-            !state.isLoading &&
-            !state.isError &&(
-              <Stack spacing={4}>
-                <FormControl id="email">
-                  <FormLabel>Email address</FormLabel>
-                  <Input
-                    type="email"
-                    value={state.email}
-                    onChange={(e) =>
-                      dispatch({
-                        type: "EMAIL_ONCHANGE",
-                        payload: e.target.value,
-                      })
-                    }
-                  />
-                </FormControl>
-                <FormControl id="password">
-                  <FormLabel>Password</FormLabel>
-                  <Input
-                    type="password"
-                    value={state.password}
-                    onChange={(e) =>
-                      dispatch({
-                        type: "PASSWORD_ONCHANGE",
-                        payload: e.target.value,
-                      })
-                    }
-                  />
-                </FormControl>
-                <Stack spacing={10}>
-                  <Stack
-                    direction={{ base: "column", sm: "row" }}
-                    align={"start"}
-                    justify={"space-between"}
-                  >
-                    <Checkbox>Remember me</Checkbox>
-                    <Link color={"blue.400"}>Forgot password?</Link>
-                  </Stack>
-                  <Button
-                    bg={"blue.400"}
-                    color={"white"}
-                    _hover={{
-                      bg: "blue.500",
-                    }}
-                    onClick={() =>
-                      loginReq(
-                        { email: state.email, password: state.password },
-                        dispatch
-                      )
-                    }
-                  >
-                    Sign in
-                  </Button>
+          {!state.isAuth && !state.isLoading && !state.isError && (
+            <Stack spacing={4}>
+              <FormControl id="email">
+                <FormLabel>Email address</FormLabel>
+                <Input
+                  type="email"
+                  value={state.email}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "EMAIL_ONCHANGE",
+                      payload: e.target.value,
+                    })
+                  }
+                />
+              </FormControl>
+              <FormControl id="password">
+                <FormLabel>Password</FormLabel>
+                <Input
+                  type="password"
+                  value={state.password}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "PASSWORD_ONCHANGE",
+                      payload: e.target.value,
+                    })
+                  }
+                />
+              </FormControl>
+              <Stack spacing={10}>
+                <Stack
+                  direction={{ base: "column", sm: "row" }}
+                  align={"start"}
+                  justify={"space-between"}
+                >
+                  <Checkbox>Remember me</Checkbox>
+                  <Link color={"blue.400"}>Forgot password?</Link>
                 </Stack>
+                <Button
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                  onClick={() =>
+                    loginReq(
+                      { email: state.email, password: state.password },
+                      dispatch
+                    )
+                  }
+                >
+                  Sign in
+                </Button>
               </Stack>
-            )}
+            </Stack>
+          )}
           {state.isLoading && (
             <VStack>
               <Spinner
@@ -152,7 +150,17 @@ export default function SimpleCard() {
                 Oops! Something went Wrong
               </Heading>
               <Text color={"gray.500"}>Please try again ...</Text>
-                          
+              <Button
+                my={5}
+                bg={"blue.400"}
+                color={"white"}
+                _hover={{
+                  bg: "blue.500",
+                }}
+                onClick={() => dispatch({ type: "LOGOUT" })}
+              >
+                Sign in
+              </Button>
             </Box>
           )}
         </Box>

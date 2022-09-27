@@ -1,7 +1,7 @@
 
 import './App.css';
 import Navbar from './Components/Navbar';
-import AllRouts from './Routs/AllRouts';
+import AllRouts from './Routes/AllRouts';
 import Footer from './Components/Footer'
 
 function App() {

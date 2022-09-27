@@ -2,26 +2,19 @@ import {
   Box,
   Flex,
   Text,
-  IconButton,
   Button,
   Stack,
-  Popover,
-  PopoverTrigger,
   useColorModeValue,
-  useBreakpointValue,
-  useDisclosure,
   Image,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 
 export default function WithSubnavigation() {
-  const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
+        bg="#F5EFE6"
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 0 }}
@@ -87,15 +80,14 @@ export default function WithSubnavigation() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
-
   return (
     <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label} >
+        <Box key={navItem.label}>
           <Link to={navItem.path}>
-            <Text as="b" fontSize={18} mx={5}>{navItem.label}</Text>
+            <Text as="b" fontSize={18} mx={5} color="#7027A0">
+              {navItem.label}{" "}
+            </Text>
           </Link>
         </Box>
       ))}

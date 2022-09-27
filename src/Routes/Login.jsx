@@ -17,10 +17,11 @@ import {
 } from "@chakra-ui/react";
 import { useContext } from "react";
 import { AppContext } from "../AppContext.jsx/AppContextProvider";
-import { loginReq } from "../AuthReducer/actionCreator";
+import { loginReq } from "../Reducer/actionCreator";
 
 export default function SimpleCard() {
   const { state, dispatch } = useContext(AppContext);
+  console.log(state.token)
 
   return (
     <Flex

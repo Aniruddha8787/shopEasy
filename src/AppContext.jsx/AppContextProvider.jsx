@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
-import reducer from "../AuthReducer/reducer";
-import store from "../AuthReducer/store";
+import reducer from "../Reducer/reducer";
+import store from "../Reducer/store";
 
 export const AppContext = createContext();
 

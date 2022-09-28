@@ -11,25 +11,29 @@ const Home = () => {
     getSliderimg(dispatch);
     slideChange(dispatch);
   }, []);
-  console.log(state.slides);
-  console.log(state.current);
 
   return (
-    <Container my={3} maxW="container.mm" >
-      <Box w="80%"  m="auto">
+    <Container my={3} maxW="container.mm">
+      <Box w="80%" m="auto">
         <Stack my={3}>
           <Text as="b" fontSize={30} color="#6F38C5" align="center">
             Welcome To ShopEasy
           </Text>
         </Stack>
-        <Box w="100%"  m="auto">
+        <Box w="100%" m="auto" my={10}>
           {state.slides && (
-            <HStack w="100%"  m="auto" justifyContent='center'>
+            <HStack w="100%" m="auto" justifyContent="center" my={5}>
               <IconButton onClick={() => slideChange("left", dispatch, state)}>
                 <ArrowBackIcon />
               </IconButton>
               <Box>
-                <Image src={state.slides[state.current]} />
+                <Image
+                  src={state.slides[state.current]}
+                  border="solid 5px #172774"
+                  borderRadius={15}
+                  height={400}
+                  width={700}
+                />
               </Box>
               <IconButton onClick={() => slideChange("right", dispatch, state)}>
                 <ArrowForwardIcon />

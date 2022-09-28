@@ -8,10 +8,16 @@ const store = {
     password: "cityslicka",
     
 
-/*------- slider ---------*/
+    /*------- slider ---------*/
 
     slides: null,
     current: 0,
 
+
+    isprodLoading: false,
+    isprodError: false,
+    products: null,
+    
+    page:1,
 }
 export default store;

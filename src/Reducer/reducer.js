@@ -1,3 +1,5 @@
+import { GET_PRODUCT_FAIURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS } from "./action"
+
 const reducer = (state, action) => {
     switch (action.type) {
         /*------- AuthReducer ---------*/
@@ -23,6 +25,17 @@ const reducer = (state, action) => {
         case "SLIDE_CHANGE":
             return { ...state, current: state.current + action.payload }
         
+        
+        case "GET_PRODUCT_REQUEST":
+            return { ...state, isprodLoading: true }
+        case "GET_PRODUCT_SUCCESS":
+            return { ...state,  products:action.payload ,isprodError:false,isprodLoading: false,}
+        case "GET_PRODUCT_FAILURE":
+            return { ...state, isprodLoading: false, products: null, isprodError: true }
+        
+
+        case "PAGE_CHANGE":
+            return{...state, page:state.page+action.payload}        
         default:
             return state;
     }

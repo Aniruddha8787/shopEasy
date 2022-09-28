@@ -1,4 +1,5 @@
 import axios from "axios"
+import { GET_PRODUCT_FAIURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS } from "./action"
 
 const loginReq = (data, dispatch) => {
     dispatch({ type: "LOGIN_REQUEST" })
@@ -41,4 +42,33 @@ const slideChange = (type, dispatch, state) => {
     }
 };
 
-export {loginReq,getSliderimg,slideChange}
+
+
+const getProductApi = (dispatch,state) => {
+    
+     dispatch({ type:"GET_PRODUCT_REQUEST"});
+
+    axios.get(`http://localhost:8080/products?_page=${state.page}&_limit=9`).then((res) => {
+        dispatch({ type: "GET_PRODUCT_SUCCESS", payload: res.data });
+        console.log(res.data)
+       
+    }).catch((err) => {
+        console.log(err)
+        dispatch({ type: "GET_PRODUCT_FAILURE" });
+    })
+}
+
+
+const pageChange = (type, dispatch, state) => {
+    if (type === "+") {
+        dispatch({type:"PAGE_CHANGE",payload:1})
+    }
+    else {
+        if (state.page === 1) {
+            return
+        }
+        dispatch({type:"PAGE_CHANGE",payload:-1})
+    }
+    
+}
+export {loginReq,getSliderimg,slideChange,getProductApi,pageChange}

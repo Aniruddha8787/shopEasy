@@ -1,19 +1,15 @@
 import {
   Flex,
-  Circle,
+
   Box,
   Image,
-  Badge,
   useColorModeValue,
-  Icon,
-  chakra,
-  Tooltip,
   HStack,
   Text,
   Button,
 } from "@chakra-ui/react";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-import { FiShoppingCart } from "react-icons/fi";
+import {Link } from "react-router-dom"
 
 
 
@@ -57,17 +53,23 @@ function ProductAddToCart({id,title,price,category,image,rating}) {
         h="500px"
         justifyContent="center"
         w="300px"
+        _hover={{
+          transform: "translateY(2px)",
+          boxShadow: "lg",
+        }}
       >
-        <Image
-          src={image}
-          alt={`Picture of ${title}`}
-          roundedTop="lg"
-          h="300px"
-          m="auto"
-          p={3}
-        />
+        <Link to={`/product/${id}`}>
+          <Image
+            src={image}
+            alt={`Picture of ${title}`}
+            roundedTop="lg"
+            h="300px"
+            m="auto"
+            p={3}
+          />
+        </Link>
 
-        <Box p="6" justifyContent="center" >
+        <Box p="6" justifyContent="center">
           <Flex mt="1" justifyContent="space-between" alignContent="center">
             <Box
               fontSize="2xl"
@@ -88,15 +90,21 @@ function ProductAddToCart({id,title,price,category,image,rating}) {
             </Box>
             <Box fontSize="2xl">
               <Box as="span" color={"gray.600"} fontSize="lg">
-                ₹
+                $
               </Box>
               {price}
             </Box>
           </Flex>
           <Rating rating={rating.rate} numReviews={rating.count} />
 
-          <Box  justifyContent="center">
-            <Button margin="auto" alignItems="center" my={3} mx={14} bgGradient='linear(to-r, gray.300, yellow.400, pink.200)'>
+          <Box justifyContent="center">
+            <Button
+              margin="auto"
+              alignItems="center"
+              my={3}
+              mx={14}
+              bgGradient="linear(to-r, gray.300, yellow.400, pink.200)"
+            >
               Add to Cart
             </Button>
           </Box>

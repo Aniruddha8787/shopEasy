@@ -1,4 +1,4 @@
-import { GET_PRODUCT_FAIURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS } from "./action"
+
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -35,7 +35,15 @@ const reducer = (state, action) => {
         
 
         case "PAGE_CHANGE":
-            return{...state, page:state.page+action.payload}        
+            return{...state, page:state.page+action.payload} 
+            
+        
+        case "GET_SINGLE_PRODUCT_SUCCESS":
+            return { ...state,  singleProduct:action.payload ,isprodError:false,isprodLoading: false,}
+        case "GET_SINGLE_PRODUCT_FAILURE":
+            return { ...state, isprodLoading: false, singleProduct: null, isprodError: true }
+        
+         
         default:
             return state;
     }

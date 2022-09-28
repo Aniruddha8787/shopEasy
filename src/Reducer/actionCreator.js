@@ -1,5 +1,4 @@
 import axios from "axios"
-import { GET_PRODUCT_FAIURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS } from "./action"
 
 const loginReq = (data, dispatch) => {
     dispatch({ type: "LOGIN_REQUEST" })
@@ -71,4 +70,19 @@ const pageChange = (type, dispatch, state) => {
     }
     
 }
-export {loginReq,getSliderimg,slideChange,getProductApi,pageChange}
+
+const getSingleProduct = (dispatch, id) => {
+    
+    dispatch({ type: "GET_PRODUCT_REQUEST" });
+
+    axios.get(`http://localhost:8080/products/${id.id}`).then((res) => {
+        dispatch({ type: "GET_SINGLE_PRODUCT_SUCCESS", payload: res.data });
+    }).catch((err) => {
+        dispatch({ type: "GET_PRODUCT_FAILURE" });
+        console.log(err)
+
+    })
+    
+}
+
+export {loginReq,getSliderimg,slideChange,getProductApi,pageChange,getSingleProduct}

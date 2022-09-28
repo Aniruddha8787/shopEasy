@@ -18,6 +18,8 @@ const store = {
     isprodError: false,
     products: null,
     
-    page:1,
+    page: 1,
+    
+    singleProduct:null,
 }
 export default store;

@@ -8,7 +8,7 @@ const Pagination = () => {
 
     
   return (
-    <HStack justifyContent="center">
+    <HStack justifyContent="center" my={5}>
       <Button
         onClick={() => pageChange("-", dispatch, state)}
         color="white"

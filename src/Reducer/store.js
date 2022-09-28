@@ -20,6 +20,9 @@ const store = {
     
     page: 1,
     
-    singleProduct:null,
+    singleProduct: null,
+    
+
+    cart:null,
 }
 export default store;

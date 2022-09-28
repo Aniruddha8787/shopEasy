@@ -8,8 +8,11 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
+import { useContext } from "react";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import {Link } from "react-router-dom"
+import { AppContext } from "../AppContext.jsx/AppContextProvider";
+import { addToCart } from "../Reducer/actionCreator";
 
 
 
@@ -41,7 +44,19 @@ function Rating({ rating, numReviews }) {
   );
 }
 
-function ProductAddToCart({id,title,price,category,image,rating}) {
+function ProductAddToCart({ id, title, price, category, image, rating }) {
+  
+  const { state, dispatch } = useContext(AppContext);
+
+
+
+
+
+
+
+
+
+
   return (
     <Flex p={50} w="full" alignItems="center" justifyContent="center">
       <Box
@@ -104,6 +119,9 @@ function ProductAddToCart({id,title,price,category,image,rating}) {
               my={3}
               mx={14}
               bgGradient="linear(to-r, gray.300, yellow.400, pink.200)"
+              onClick={() =>
+                addToCart({ id, title, price, category, image, rating ,Qty:1},dispatch)
+              }
             >
               Add to Cart
             </Button>

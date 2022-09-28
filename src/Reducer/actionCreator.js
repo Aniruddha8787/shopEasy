@@ -85,4 +85,53 @@ const getSingleProduct = (dispatch, id) => {
     
 }
 
-export {loginReq,getSliderimg,slideChange,getProductApi,pageChange,getSingleProduct}
+const addToCart = (data,dispatch) => {
+    axios.post("http://localhost:8080/cart", data).then((res) => {
+    }).catch((err) => {
+        console.log(err);
+        if (err.message === "Request failed with status code 500") {
+            alert("Data already added")
+        }
+    })
+}
+
+const getCartApi = (dispatch) => {
+
+
+    dispatch({ type: "GET_CART_REQUEST" });
+
+    axios.get("http://localhost:8080/cart").then((res) => {
+        
+        dispatch({ type: "GET_CART_SUCCESS", payload: res.data });
+    }).catch((err) => {
+        dispatch({ type: "GET_CART_FAILURE" });
+        console.log(err)
+
+    })
+    
+}
+
+
+const deleteFromCart = (id, dispatch) => {
+
+    axios.delete(`http://localhost:8080/cart/${id}`).then((res) => {
+        getCartApi(dispatch)
+        
+    }).catch((err) => {
+        console.log(err)
+
+    })
+}
+
+const updateQuantity = (id,dispatch,data) => {
+    axios.patch(`http://localhost:8080/cart/${id}`,data).then((res) => {
+        getCartApi(dispatch)
+        
+    }).catch((err) => {
+        console.log(err)
+
+    })
+}
+
+
+export {updateQuantity,loginReq,getSliderimg,slideChange,getProductApi,pageChange,getSingleProduct,addToCart,getCartApi,deleteFromCart}

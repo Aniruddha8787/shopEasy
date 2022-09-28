@@ -43,6 +43,13 @@ const reducer = (state, action) => {
         case "GET_SINGLE_PRODUCT_FAILURE":
             return { ...state, isprodLoading: false, singleProduct: null, isprodError: true }
         
+        case "GET_CART_REQUEST":
+            return { ...state, isprodLoading: true }
+        case "GET_CART_SUCCESS":
+            return { ...state,  cart:action.payload ,isprodError:false,isprodLoading: false,}
+        case "GET_CART_FAILURE":
+            return { ...state, isprodLoading: false, cart: null, isprodError: true }
+        
          
         default:
             return state;

@@ -22,7 +22,7 @@ const Payment = () => {
 
   return (
     <Flex gap={10} w="100%" textAlign="start" mt={10}>
-      <Box w="50%" h={"120vh"} pt={10} pl={20}>
+      <Box w="50%" h={"120vh"} pt={10} pl={20} m="auto">
         <Text color="grey" fontWeight={600}>
           Enter Your Details to proceed...
         </Text>
@@ -53,6 +53,16 @@ const Payment = () => {
             <label>Card CVV *</label>
             <Input></Input>
           </Box>
+          <Button
+            w="100%"
+            borderRadius={"none"}
+            background="#e51075"
+            color="white"
+            mt={10}
+            onClick={handle}
+          >
+            {flag ? "SUBMIT PAYMENT" : <Spinner />}
+          </Button>
         </Box>
       </Box>
     </Flex>

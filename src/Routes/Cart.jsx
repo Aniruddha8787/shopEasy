@@ -25,6 +25,7 @@ import {
 
 const Cart = () => {
   const { state, dispatch } = useContext(AppContext);
+  const value = 200;
 
   useEffect(() => {
     getCartApi(dispatch);
@@ -59,7 +60,7 @@ const Cart = () => {
               <AlertTitle>Something went wrong !!!</AlertTitle>
             </Alert>
           )}
-          <VStack w="60%" >
+          <VStack w="60%">
             {state.cart &&
               state.cart.map((el) => {
                 return (
@@ -69,7 +70,6 @@ const Cart = () => {
                     w="full"
                     alignItems="center"
                     justifyContent="center"
-                    
                   >
                     <HStack
                       bg="white"
@@ -182,7 +182,7 @@ const Cart = () => {
                 );
               })}
           </VStack>
-          <VStack w="40%" >
+          <VStack w="40%">
             {state.cart && (
               <Box
                 w="90%"
@@ -193,7 +193,9 @@ const Cart = () => {
                 bg="#f5f5f5"
                 mb={10}
               >
-                <Text fontWeight={700}>Price Details :</Text>
+                <Text fontWeight={700} fontSize="2xl">
+                  Price Details :
+                </Text>
 
                 <Box mt={5}>
                   <hr color="#C70A80" />
@@ -202,22 +204,31 @@ const Cart = () => {
                 <Flex justifyContent="space-between" mt={10} alignItms="center">
                   <Text fontSize="xl">Price :</Text>
                   <Box>
-                    <Text>200</Text>
+                    <Text fontSize="xl" fontWeight={500} color="#FD841F">
+                      {value}$
+                    </Text>
                   </Box>
                 </Flex>
                 <Flex justifyContent="space-between" mt={10} alignItms="center">
                   <Text fontSize="xl">Discount (5%) :</Text>
                   <Box>
-                    <Text>200</Text>
+                    <Text fontSize="xl" fontWeight={500} color="#FD841F">
+                      {value * 0.05}$
+                    </Text>
                   </Box>
                 </Flex>
+                <Box mt={5}>
+                  <hr color="#C70A80" />
+                </Box>
 
-                <Flex justifyContent="space-between" mt={10} alignItms="center">
+                <Flex justifyContent="space-between" mt={5} alignItms="center">
                   <Text fontWeight={700} fontSize="2xl">
                     Total :
                   </Text>
                   <Box>
-                    <Text>200</Text>
+                    <Text fontSize="2xl" fontWeight={700} color="#FD841F">
+                      {value - value * 0.05} $
+                    </Text>
                   </Box>
                 </Flex>
 

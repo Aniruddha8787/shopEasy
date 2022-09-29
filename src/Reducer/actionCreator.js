@@ -1,4 +1,7 @@
+import { Alert } from "@chakra-ui/react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
 
 const loginReq = (data, dispatch) => {
     dispatch({ type: "LOGIN_REQUEST" })
@@ -85,14 +88,21 @@ const getSingleProduct = (dispatch, id) => {
     
 }
 
-const addToCart = (data,dispatch) => {
-    axios.post("http://localhost:8080/cart", data).then((res) => {
+const addToCart = (data, dispatch, auth,navigate) => {
+    
+    if (auth === false) {
+        alert("you have to login first")
+        navigate("/login");
+    }
+    else {
+        axios.post("http://localhost:8080/cart", data).then((res) => {
     }).catch((err) => {
         console.log(err);
         if (err.message === "Request failed with status code 500") {
             alert("Data already added")
         }
     })
+    }
 }
 
 const getCartApi = (dispatch) => {

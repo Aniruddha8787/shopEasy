@@ -27,13 +27,29 @@ const Cart = () => {
   },[])
 
   return (
-    <Container maxW="container.mm" >
+    <Container maxW="container.mm">
       <Box>
-        <Stack my={3}>
-          <Text as="b" fontSize={25} color="#6F38C5" align="center">
-            Your Cart
-          </Text>
-        </Stack>
+        {state.cart && (
+          <HStack my={5} justifyContent="space-between" mx={5}>
+            <Text as="b" fontSize={25} color="#6F38C5" align="end">
+              Total Cart Items : {state.cart.length}
+            </Text>
+            <Link to="/payment">
+              <Button
+                p={4}
+                color="white"
+                fontWeight="bold"
+                borderRadius="md"
+                bgGradient="linear(to-r, teal.500, green.500)"
+                _hover={{
+                  bgGradient: "linear(to-r, red.500, yellow.500)",
+                }}
+              >
+                CheckOut
+              </Button>
+            </Link>
+          </HStack>
+        )}
         <Box>
           {state.isprodLoading && (
             <VStack>
@@ -138,7 +154,7 @@ const Cart = () => {
                                   Qty: el.Qty - 1,
                                 })
                               }
-                              disabled={el.Qty===1}
+                              disabled={el.Qty === 1}
                             >
                               -
                             </Button>

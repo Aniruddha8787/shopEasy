@@ -21,7 +21,7 @@ import { loginReq } from "../Reducer/actionCreator";
 
 export default function SimpleCard() {
   const { state, dispatch } = useContext(AppContext);
-  console.log(state.token)
+  
 
   return (
     <Flex
@@ -117,7 +117,7 @@ export default function SimpleCard() {
                 Welcome
               </Heading>
               <Text color={"gray.500"}>You are Logged in</Text>
-              <Text color={"gray.500"}>Token : </Text>
+              <Text color={"gray.500"}>Token: {state.token.token} </Text>
               <Button
                 my={5}
                 bg={"blue.400"}

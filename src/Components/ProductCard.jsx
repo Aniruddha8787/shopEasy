@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useContext } from "react";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-import {Link } from "react-router-dom"
+import {Link, useNavigate } from "react-router-dom"
 import { AppContext } from "../AppContext.jsx/AppContextProvider";
 import { addToCart } from "../Reducer/actionCreator";
 
@@ -47,6 +47,7 @@ function Rating({ rating, numReviews }) {
 function ProductAddToCart({ id, title, price, category, image, rating }) {
   
   const { state, dispatch } = useContext(AppContext);
+  const navigate = useNavigate();
 
 
 
@@ -120,7 +121,12 @@ function ProductAddToCart({ id, title, price, category, image, rating }) {
               mx={14}
               bgGradient="linear(to-r, gray.300, yellow.400, pink.200)"
               onClick={() =>
-                addToCart({ id, title, price, category, image, rating ,Qty:1},dispatch)
+                addToCart(
+                  { id, title, price, category, image, rating, Qty: 1 },
+                  dispatch,
+                  state.isAuth,
+                  navigate
+                )
               }
             >
               Add to Cart

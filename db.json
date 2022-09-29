@@ -250,6 +250,18 @@
   ],
   "cart": [
     {
+      "id": 8,
+      "title": "Tunnel Earrings",
+      "price": 10.99,
+      "category": "jewelery",
+      "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+      "rating": {
+        "rate": 1.9,
+        "count": 100
+      },
+      "Qty": 1
+    },
+    {
       "id": 3,
       "title": "Mens Cotton Jacket",
       "price": 55.99,
@@ -262,14 +274,26 @@
       "Qty": 1
     },
     {
-      "id": 8,
-      "title": "Tunnel Earrings",
-      "price": 10.99,
-      "category": "jewelery",
-      "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+      "id": 2,
+      "title": "Slim Fit T-Shirts ",
+      "price": 22.3,
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
       "rating": {
-        "rate": 1.9,
-        "count": 100
+        "rate": 4.1,
+        "count": 259
+      },
+      "Qty": 1
+    },
+    {
+      "id": 1,
+      "title": "Fjallraven Backpack",
+      "price": 109.95,
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "rating": {
+        "rate": 3.9,
+        "count": 120
       },
       "Qty": 1
     },
@@ -283,7 +307,19 @@
         "rate": 2.1,
         "count": 430
       },
-      "Qty": 2
+      "Qty": 1
+    },
+    {
+      "id": 5,
+      "title": "Dragon Chain Bracelet",
+      "price": 695,
+      "category": "jewelery",
+      "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+      "rating": {
+        "rate": 4.6,
+        "count": 400
+      },
+      "Qty": 1
     },
     {
       "id": 6,
@@ -294,18 +330,6 @@
       "rating": {
         "rate": 3.9,
         "count": 70
-      },
-      "Qty": 1
-    },
-    {
-      "id": 9,
-      "title": "WD 2TB Hard Drive",
-      "price": 64,
-      "category": "electronics",
-      "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-      "rating": {
-        "rate": 3.3,
-        "count": 203
       },
       "Qty": 1
     }

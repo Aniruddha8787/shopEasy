@@ -22,9 +22,9 @@ const Payment = () => {
 
   return (
     <Flex gap={10} w="100%" textAlign="start" mt={10}>
-      <Box w="50%" h={"120vh"} pt={20} pl={20}>
+      <Box w="50%" h={"120vh"} pt={10} pl={20}>
         <Text color="grey" fontWeight={600}>
-          Enter Your Details to proceed
+          Enter Your Details to proceed...
         </Text>
         <Text fontWeight={600} mt={10}>
           Secure Payment{" "}
@@ -54,54 +54,6 @@ const Payment = () => {
             <Input></Input>
           </Box>
         </Box>
-      </Box>
-      <Box w="40%" h={"120vh"} pl={20} pt={20} pr={20} bg="#f5f5f5" mb={10}>
-        <Text fontWeight={700}>Price Details :</Text>
-
-        <Box mt={5}>
-          <hr color="#C70A80" />
-        </Box>
-
-        <Flex justifyContent="space-between" mt={10} alignItms="center">
-          <Text fontSize="xl">Price :</Text>
-          <Box>
-            <Text>{`${value} $`}</Text>
-          </Box>
-        </Flex>
-        <Flex justifyContent="space-between" mt={10} alignItms="center">
-          <Text fontSize="xl">Discount (5%) :</Text>
-          <Box>
-            <Text>{`${value} $`}</Text>
-          </Box>
-        </Flex>
-
-        <Flex justifyContent="space-between" mt={10} alignItms="center">
-          <Text fontWeight={700} fontSize="2xl">
-            Total :
-          </Text>
-          <Box>
-            <Text>{`${value} $`}</Text>
-          </Box>
-        </Flex>
-
-        <Flex mt={7} gap={5}>
-          <input type="checkbox" />
-          <Text>
-            I agree to the Terms of Use and have read and understand the Privacy
-            Policy
-          </Text>
-        </Flex>
-
-        <Button
-          w="100%"
-          borderRadius={"none"}
-          background="#e51075"
-          color="white"
-          mt={10}
-          onClick={handle}
-        >
-          {flag ? "SUBMIT PAYMENT" : <Spinner />}
-        </Button>
       </Box>
     </Flex>
   );

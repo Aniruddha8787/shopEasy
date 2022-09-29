@@ -250,18 +250,6 @@
   ],
   "cart": [
     {
-      "id": 8,
-      "title": "Tunnel Earrings",
-      "price": 10.99,
-      "category": "jewelery",
-      "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
-      "rating": {
-        "rate": 1.9,
-        "count": 100
-      },
-      "Qty": 1
-    },
-    {
       "id": 3,
       "title": "Mens Cotton Jacket",
       "price": 55.99,

@@ -1,7 +1,5 @@
-import { Alert } from "@chakra-ui/react"
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
 
+import axios from "axios"
 
 const loginReq = (data, dispatch) => {
     dispatch({ type: "LOGIN_REQUEST" })
@@ -16,14 +14,15 @@ const loginReq = (data, dispatch) => {
 }
 
 const getSliderimg = (dispatch) => {
-    axios.get("http://localhost:8080/slider").then((res) => {
-        dispatch({type:"SLIDE_GET_REQUEST",payload:res.data})
-        
-    }).catch((err) => {
-        console.log(err)
+    axios
+      .get("https://63d67c5be60d5743697988d9.mockapi.io/slider")
+      .then((res) => {
+        dispatch({ type: "SLIDE_GET_REQUEST", payload: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
         dispatch();
-        
-    })
+      });
 }
 
 const slideChange = (type, dispatch, state) => {
@@ -50,14 +49,18 @@ const getProductApi = (dispatch,state) => {
     
      dispatch({ type:"GET_PRODUCT_REQUEST"});
 
-    axios.get(`http://localhost:8080/products?_page=${state.page}&_limit=9`).then((res) => {
+    axios
+      .get(
+        `https://63d680d4e60d57436979dff4.mockapi.io/products?_page=${state.page}&_limit=9`
+      )
+      .then((res) => {
         dispatch({ type: "GET_PRODUCT_SUCCESS", payload: res.data });
-        console.log(res.data)
-       
-    }).catch((err) => {
-        console.log(err)
+        
+      })
+      .catch((err) => {
+        console.log(err);
         dispatch({ type: "GET_PRODUCT_FAILURE" });
-    })
+      });
 }
 
 
@@ -78,30 +81,36 @@ const getSingleProduct = (dispatch, id) => {
     
     dispatch({ type: "GET_PRODUCT_REQUEST" });
 
-    axios.get(`http://localhost:8080/products/${id.id}`).then((res) => {
+    axios
+      .get(`https://63d680d4e60d57436979dff4.mockapi.io/products/${id.id}`)
+      .then((res) => {
         dispatch({ type: "GET_SINGLE_PRODUCT_SUCCESS", payload: res.data });
-    }).catch((err) => {
+      })
+      .catch((err) => {
         dispatch({ type: "GET_PRODUCT_FAILURE" });
-        console.log(err)
-
-    })
+        console.log(err);
+      });
     
 }
 
 const addToCart = (data, dispatch, auth,navigate) => {
-    
+    console.log("data", data);
     if (auth === false) {
         alert("you have to login first")
         navigate("/login");
     }
     else {
-        axios.post("http://localhost:8080/cart", data).then((res) => {
-    }).catch((err) => {
-        console.log(err);
-        if (err.message === "Request failed with status code 500") {
-            alert("Data already added")
-        }
-    })
+        axios
+          .post("https://63d67c5be60d5743697988d9.mockapi.io/cart", data)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+            if (err.message === "Request failed with status code 500") {
+              alert("Data already added");
+            }
+          });
     }
 }
 
@@ -110,21 +119,22 @@ const getCartApi = (dispatch) => {
 
     dispatch({ type: "GET_CART_REQUEST" });
 
-    axios.get("http://localhost:8080/cart").then((res) => {
-        
+    axios
+      .get("https://63d67c5be60d5743697988d9.mockapi.io/cart")
+      .then((res) => {
         dispatch({ type: "GET_CART_SUCCESS", payload: res.data });
-    }).catch((err) => {
+      })
+      .catch((err) => {
         dispatch({ type: "GET_CART_FAILURE" });
-        console.log(err)
-
-    })
+        console.log(err);
+      });
     
 }
 
 
 const deleteFromCart = (id, dispatch) => {
 
-    axios.delete(`http://localhost:8080/cart/${id}`).then((res) => {
+    axios.delete(`https://63d67c5be60d5743697988d9.mockapi.io/cart/${id}`).then((res) => {
         getCartApi(dispatch)
         
     }).catch((err) => {
@@ -134,7 +144,7 @@ const deleteFromCart = (id, dispatch) => {
 }
 
 const updateQuantity = (id,dispatch,data) => {
-    axios.patch(`http://localhost:8080/cart/${id}`,data).then((res) => {
+    axios.patch(`https://63d67c5be60d5743697988d9.mockapi.io/cart/${id}`,data).then((res) => {
         getCartApi(dispatch)
         
     }).catch((err) => {
